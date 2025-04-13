@@ -8,3 +8,6 @@
 /Release
 /x64/Release
 /.vs
+/xll_template/Debug
+/xll_template/Release
+/xll_template/x64
