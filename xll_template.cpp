@@ -4,6 +4,7 @@
 
 using namespace xll;
 
+// Throw on float
 AddIn xai_tgamma(
 	// Return double, C++ name of function, Excel name.
 	Function(XLL_DOUBLE, "xll_tgamma", "TGAMMA")
@@ -29,8 +30,19 @@ be used for documentation.
 double WINAPI xll_tgamma(double x)
 {
 #pragma XLLEXPORT // must be specified to export function
+	double result = std::numeric_limits<double>::quiet_NaN();
 
-	return tgamma(x);
+	try {
+		result = tgamma(x);
+	}
+	catch (const std::exception& ex) {
+		XLL_ERROR(ex.what());
+	}
+	catch (...) {
+		XLL_ERROR("Unknown error in xll_tgamma");
+	}
+
+	return result;
 }
 
 // Press Alt-F8 then type 'XLL.MACRO' to call 'xll_macro'
