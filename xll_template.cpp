@@ -1,5 +1,5 @@
 ﻿// xll_template.cpp - Sample xll project.
-#include <cmath> // for double tgamma(double)
+#include <cmath> // for `double tgamma(double)`
 #include "xll_template.h"
 
 using namespace xll;
